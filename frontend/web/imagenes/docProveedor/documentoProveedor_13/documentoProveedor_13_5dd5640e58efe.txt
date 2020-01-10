@@ -1,0 +1,11 @@
+ALTER TABLE `datum2`.`acuerdo_precios` 
+ADD COLUMN `proveedor_id` INT(10) UNSIGNED NOT NULL AFTER `empresa_id`;
+
+ALTER TABLE `datum2`.`acuerdo_precios` 
+ADD INDEX `acuerdo_proveedor_idx` (`proveedor_id` ASC);
+ALTER TABLE `datum2`.`acuerdo_precios` 
+ADD CONSTRAINT `acuerdo_proveedor`
+  FOREIGN KEY (`proveedor_id`)
+  REFERENCES `datum2`.`proveedor` (`id`)
+  ON DELETE RESTRICT
+  ON UPDATE CASCADE;

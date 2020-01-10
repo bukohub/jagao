@@ -1,0 +1,20 @@
+ALTER TABLE `datum2`.`grupos_novedades` 
+ADD COLUMN `empresa_id` INT(10) UNSIGNED NULL AFTER `comentario`,
+ADD INDEX `novedades_empresas_idx` (`empresa_id` ASC);
+ALTER TABLE `datum2`.`grupos_novedades` 
+ADD CONSTRAINT `novedades_empresas`
+  FOREIGN KEY (`empresa_id`)
+  REFERENCES `datum2`.`empresas` (`id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+
+ALTER TABLE `datum2`.`novedades` 
+ADD COLUMN `empresa_id` INT(10) UNSIGNED NULL AFTER `observacion`,
+ADD INDEX `novedades_empresas_idx` (`empresa_id` ASC);
+ALTER TABLE `datum2`.`novedades` 
+ADD CONSTRAINT `novedad_empresas`
+  FOREIGN KEY (`empresa_id`)
+  REFERENCES `datum2`.`empresas` (`id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;

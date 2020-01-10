@@ -1,0 +1,30 @@
+<?php
+
+return [
+    'adminEmail' => 'admin@example.com',
+    'supportEmail' => 'support@example.com',
+    'senderEmail' => 'noreply@example.com',
+    'senderName' => 'Example.com mailer',
+    'user.passwordResetTokenExpire' => 3600,
+    'urlImagenesProveedores' => '/imagenes/proveedores/',
+    'rutaImagenesProveedores' => '/web/imagenes/proveedores/',
+    'rutaRuntProveedores' => '/web/imagenes/runtProveedor/',
+    'rutRuntProveedores'=>'/imagenes/runtProveedor/',
+    'rutaDocProveedores' => '/web/imagenes/docProveedor/',
+    'rutDocProveedores' => '/imagenes/docProveedor/',
+    'rutaCertProveedores' => '/web/imagenes/certProveedor/',
+    'rutCertProveedores' => '/imagenes/certProveedor/',
+    'urlImagenesProductos' => '/imagenes/productos/',
+    'rutaImagenesProductos' => '/web/imagenes/productos/',
+    'rutaBaseImagenes' => '/web/imagenes/',
+    'rutaImagenesSeguimiento' => '/web/imagenes/seguimiento/',
+    'urlImagenesSeguimiento' => '/imagenes/seguimiento/',
+    'rutaBaseLogo' => '/img/core-img/',
+    'urlPdfPublicaciones' => '/pdf/publicaciones/',
+    'rutaPdfPublicaciones' => '/web/pdf/publicaciones/',
+    'rutaBaseTerminos'=>'/web/terminos',
+    'rutaPdfTerminos' => '/web/terminos/file/',
+    'rutaBasePdf' => '/web/pdf/',
+    'confirmation'=>'http://127.0.0.1:8091/jagao/frontend/web/producto/page-confirmation',
+    'response'=>'http://127.0.0.1:8091/jagao/frontend/web/index.php'
+];

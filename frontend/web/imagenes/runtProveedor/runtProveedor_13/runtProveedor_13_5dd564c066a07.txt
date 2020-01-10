@@ -1,0 +1,66 @@
+'****************************************************************************
+' Metodo:  CARGA
+' Fecha:   1/08/2000
+' Version: 1.0                                                 NO MODIFICABLE
+'****************************************************************************
+' Carga del metodo de nodo particular.
+
+SSE_INICIO.DESTROYBLOCK()
+SSE_INICIO.Load_Blk()
+
+SSE_INICIO_PERSONA.DESTROYBLOCK()
+SSE_INICIO_PERSONA.Load_Blk()
+SSE_INICIO_PERSONA.Begin()
+
+SSE_PARAM_GLOBAL.DESTROYBLOCK()
+SSE_PARAM_GLOBAL.Load_Blk()
+MsMailWebMaster =  SSE_PARAM_GLOBAL.GET_PARAM_GLOBAL("MAIL_WEBMASTER")
+MsMailRRHH =  SSE_PARAM_GLOBAL.GET_PARAM_GLOBAL("MAIL_RRHH")
+MsIdPerson = SSE_INICIO_PERSONA.STD_ID_PERSON
+
+SSE_INICIO.MAIL_RRHH = MsMailRRHH
+SSE_INICIO.MAIL_WEBMASTER = MsMailWebMaster
+SSE_INICIO.STD_ID_PERSON = MsIdPerson
+
+' Calculo del nombre de la persona:
+
+MsCompleto = SSE_INICIO_PERSONA.SCO_GB_NAME
+
+'Cedula del colaborador
+MsCedula = SSE_INICIO_PERSONA.STD_SSN
+
+'***************Cambio el nombre de la cabecera por el SCO_GB_NAME****************
+
+'MsNombre = SSE_INICIO_PERSONA.STD_N_FIRST_NAME
+'If MsNombre = NullValue() Then
+  '  MsNombre = ""
+'EndIf
+'MsApellido = SSE_INICIO_PERSONA.STD_N_FAMILY_NAME_1
+'If MsApellido = NullValue() Then
+'    MsApellido = ""
+'EndIf
+'MsCompleto = MsNombre + " " + MsApellido
+'***************Cambio el nombre de la cabecera por el SCO_GB_NAME****************
+
+SSE_INICIO.NOMBRE = MsCompleto
+SSE_INICIO.CEDULA = MsCedula 
+
+'Cargamos los campos moneda
+SHCO_GN_PORTAL!SHCO_GN_ROOT.SHCO_LOAD("")
+SSE_ZUR_CURR=SHCO_GN_PORTAL!SHCO_GN_ROOT.SHCO_ZUR_CURR
+SSE_EX_TYPE = SHCO_GN_PORTAL!SHCO_GN_ROOT.SHCO_EX_TYPE
+SSE_DEC_NB= SHCO_GN_PORTAL!SHCO_GN_ROOT.SHCO_DEC_NB
+SSE_ID_CURRENCY= SHCO_GN_PORTAL!SHCO_GN_ROOT.SHCO_ID_CURRENCY
+SSE_NM_CURRENCY= SHCO_GN_PORTAL!SHCO_GN_ROOT.SHCO_NM_CURRENCY
+
+' Caragamos el parametro de aplicacion MANAGER_VISIBILITY que nos indica si el manager tiene activada la visibilidad por Unidad Organizativa en el ESS
+' o no
+
+SAV_PARAMS!SAV_PARAMS.RET_KEY("THINCLIENT","PORTAL_PARAM","MANAGER_VISIBILITY")
+MANAGER_VISIBILITY = SAV_PARAMS!FINAL_RETURN.APP_VALUE
+
+' Load ID Organization Property
+SSE_PRP_ID_ORGANIZATION = SSE_INICIO!GetProperty("ID_ORGANIZATION")
+
+Return(0)
+
